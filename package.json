@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "babel-plugin-react-compiler": "^0.0.0-experimental-2bc6fec-20240909",
     "eslint-plugin-react-compiler": "^0.0.0-experimental-b6997ec-20240909",
     "framer-motion": "^11.5.4",
