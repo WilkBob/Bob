@@ -1,4 +1,4 @@
-import ProgressiveImage from "./ProgressiveImage";
+import Project from "./Project";
 
 const projObj = [
   {
@@ -71,7 +71,7 @@ const projObj = [
 const Projects = () => {
   return (
     <section
-      className="bg-zinc-800 md:bg-inherit md:bg-gradient-to-r md:from-zinc-800 md:to-transparent p-4 min-h-screen w-full z-10 flex flex-col items-center justify-center space-y-8 md:rounded-br-[50%]"
+      className="bg-zinc-800 md:bg-inherit md:bg-gradient-to-r md:from-zinc-800 md:to-transparent p-4 pb-20 min-h-screen w-full z-10 flex flex-col items-center justify-center md:rounded-br-[50%]"
       id="projects"
     >
       <div className="container mx-auto space-y-8 flex flex-col justify-center h-full">
@@ -85,76 +85,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-const Project = ({
-  title,
-  description,
-  techStack,
-  features,
-  links,
-  images,
-}) => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div>
-        <h3 className="text-3xl font-semibold text-teal-300">{title}</h3>
-        <p className="text-lg">{description}</p>
-        <div className="space-y-4">
-          <h4 className="text-2xl font-semibold text-teal-300">Tech Stack</h4>
-          <ul className="space-y-2">
-            {techStack.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="space-y-4">
-          <h4 className="text-2xl font-semibold text-teal-300">Features</h4>
-          <ul className="space-y-2">
-            {features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="space-x-4">
-          {links.live && (
-            <a
-              href={links.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-teal-300 hover:text-teal-500 transition-colors duration-300"
-            >
-              Live Site
-            </a>
-          )}
-          {links.github && (
-            <a
-              href={links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-teal-300 hover:text-teal-500 transition-colors duration-300"
-            >
-              GitHub
-            </a>
-          )}
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-4">
-        <ProgressiveImage
-          tinyUrl={images.home.tiny}
-          thumbUrl={images.home.thumb}
-          alt={images.home.alt}
-        />
-        <ProgressiveImage
-          tinyUrl={images.blog.tiny}
-          thumbUrl={images.blog.thumb}
-          alt={images.blog.alt}
-        />
-        <ProgressiveImage
-          tinyUrl={images.post.tiny}
-          thumbUrl={images.post.thumb}
-          alt={images.post.alt}
-        />
-      </div>
-    </div>
-  );
-};

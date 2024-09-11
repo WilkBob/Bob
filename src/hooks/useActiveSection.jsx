@@ -13,7 +13,7 @@ export const useActiveSection = (sectionIds) => {
           }
         });
       },
-      { rootMargin: "0px", threshold: [0.6, 1.0] },
+      { rootMargin: "0px", threshold: [0.2, 0.9] }
     );
 
     sectionIds.forEach((id) => {

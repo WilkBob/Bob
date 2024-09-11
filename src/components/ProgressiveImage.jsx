@@ -39,7 +39,7 @@ const ProgressiveImage = ({ tinyUrl, thumbUrl, alt }) => {
   }, [thumbUrl]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden w-full">
       <img
         ref={imgRef}
         src={src}

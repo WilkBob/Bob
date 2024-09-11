@@ -166,6 +166,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <hr className="w-3/4 border-t-2 border-teal-300/20 mt-10" />
     </section>
   );
 };
