@@ -1,6 +1,4 @@
-import Project from "./Project";
-
-const projObj = [
+export const projObj = [
   {
     title: "Sugano Investments Website",
     description: "A website for a family-owned investment company.",
@@ -67,21 +65,3 @@ const projObj = [
     },
   },
 ];
-
-const Projects = () => {
-  return (
-    <section
-      className="bg-zinc-800 md:bg-inherit md:bg-gradient-to-r md:from-zinc-800 md:to-transparent p-4 pb-20 min-h-screen w-full z-10 flex flex-col items-center justify-center md:rounded-br-[50%]"
-      id="projects"
-    >
-      <div className="container mx-auto space-y-8 flex flex-col justify-center h-full">
-        <h2 className="text-4xl font-bold text-teal-300">Projects</h2>
-        {projObj.map((proj, index) => (
-          <Project key={index} {...proj} />
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default Projects;

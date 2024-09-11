@@ -2,7 +2,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Hero from "./components/Hero";
 import ProgressMeter from "./components/ProgressMeter";
-import Projects from "./components/Projects";
+import Projects from "./components/Projects/Projects";
 import { useActiveSection } from "./hooks/useActiveSection";
 
 function App() {

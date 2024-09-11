@@ -1,4 +1,4 @@
-import ProgressiveImage from "./ProgressiveImage";
+import ProgressiveImage from "../ProgressiveImage";
 
 const Project = ({
   title,
