@@ -9,10 +9,10 @@ function App() {
   const activeSection = useActiveSection(sectionIds);
   return (
     <main className="min-h-screen bg-gradient-to-bl from-teal-800 to-zinc-800 flex flex-col items-center justify-center text-teal-100 selection:bg-white/20 selection:text-teal-100">
+      <ProgressMeter sectionIDs={sectionIds} currentID={activeSection} />
       <Hero />
       <About />
       <Projects />
-      <ProgressMeter sectionIDs={sectionIds} currentID={activeSection} />
     </main>
   );
 }

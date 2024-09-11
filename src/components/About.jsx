@@ -28,7 +28,7 @@ const About = () => {
       id="about"
     >
       <div className="container mx-auto space-y-8 flex flex-col justify-center h-full">
-        <h2 className="text-4xl font-bold text-teal-400">About Me</h2>
+        <h2 className="text-4xl font-bold text-teal-300">About Me</h2>
         <p className="text-lg max-w-[800px] lg:max-w-[1000px]">
           Hi! I&apos;m Robert, a full-stack web developer based in the United
           States. I enjoy building web applications that are fast, responsive,
@@ -42,7 +42,7 @@ const About = () => {
           knowledge.
         </p>
         <div className="space-y-8">
-          <h3 className="text-3xl font-semibold text-teal-400">Skills</h3>
+          <h3 className="text-3xl font-semibold text-teal-300">Skills</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
               <h4 className="text-2xl font-semibold text-teal-300 mb-4">
