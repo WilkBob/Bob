@@ -23,7 +23,10 @@ import {
 
 const About = () => {
   return (
-    <section className="bg-zinc-800 md:bg-inherit md:bg-gradient-to-r md:from-zinc-800 md:to-transparent p-4 min-h-screen w-full z-10 flex flex-col items-center justify-center py-20 space-y-8 rounded-tr-[50%]">
+    <section
+      className="bg-zinc-800 md:bg-inherit md:bg-gradient-to-r md:from-zinc-800 md:to-transparent p-4 min-h-screen w-full z-10 flex flex-col items-center justify-center py-20 space-y-8 md:rounded-tr-[50%]"
+      id="about"
+    >
       <div className="container mx-auto space-y-8 flex flex-col justify-center h-full">
         <h2 className="text-4xl font-bold text-teal-400">About Me</h2>
         <p className="text-lg max-w-[800px] lg:max-w-[1000px]">

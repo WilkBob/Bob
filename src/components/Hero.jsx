@@ -8,7 +8,7 @@ import Canvas from "./Canvas/Canvas";
 
 const Hero = () => {
   return (
-    <section className="h-screen w-full px-4 py-12 text-white">
+    <section className="h-screen w-full px-4 py-12 text-white" id="hero">
       <Canvas />
       <div className="container mx-auto space-y-4 flex flex-col justify-center h-full">
         <h1 className="text-5xl font-bold bg-gradient-to-l from-teal-300 to-white/60 bg-clip-text text-transparent animate-gradient bg-[length:400%_200%]">
