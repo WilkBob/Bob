@@ -69,7 +69,7 @@ const Contact = () => {
             <p className="mt-2 text-lg text-teal-100">
               You can also check out my resume{" "}
               <a
-                href="/Robert_Wilkinson.pdf"
+                href="/RobertWilkinson.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-teal-300 hover:text-teal-500"
