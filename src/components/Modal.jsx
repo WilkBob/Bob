@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import ProgressiveImage from "./ProgressiveImage";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,40 +6,49 @@ import { motion, AnimatePresence } from "framer-motion";
 const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
   const imageKeys = Object.keys(images);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setIndex((prevIndex) =>
       prevIndex === imageKeys.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [imageKeys.length, setIndex]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setIndex((prevIndex) =>
       prevIndex === 0 ? imageKeys.length - 1 : prevIndex - 1
     );
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowLeft") {
-      prevImage();
-    } else if (e.key === "ArrowRight") {
-      nextImage();
-    } else if (e.key === "Escape") {
-      setModalOpen(false);
-    }
-  };
+  }, [imageKeys.length, setIndex]);
 
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("swiped-left", nextImage);
-    window.addEventListener("swiped-right", prevImage);
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        prevImage();
+      } else if (e.key === "ArrowRight") {
+        nextImage();
+      } else if (e.key === "Escape") {
+        setModalOpen(false);
+      }
+    };
+
+    const preventScroll = (e) => {
+      e.preventDefault();
+    };
+
+    if (modalOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+    } else {
+      document.body.style.overflow = ""; // Re-enable scrolling
+    }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("swiped-left", nextImage);
-      window.removeEventListener("swiped-right", prevImage);
+      document.body.style.overflow = ""; // Re-enable scrolling
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
     };
-  }, [index]);
-
+  }, [modalOpen, prevImage, nextImage, setModalOpen]);
   return (
     <AnimatePresence>
       {modalOpen && (
@@ -47,14 +56,14 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center"
+          className="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-25 z-50  flex justify-center items-center"
           onClick={() => setModalOpen(false)}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-gray-800 md:p-4 rounded-lg shadow-2xl w-full m-4"
+            className="md:p-4 rounded-lg shadow-2xl max-w-6xl w-full md:m-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-end mb-2">

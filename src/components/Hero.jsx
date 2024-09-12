@@ -69,8 +69,6 @@ const Hero = () => {
             href="/RobertWilkinson.pdf"
             download
             className="flex items-center space-x-2 text-teal-100 hover:text-teal-300 transition-colors duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
           >
             <FaFileDownload size={24} />
             <span>Resume</span>
