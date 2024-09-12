@@ -24,34 +24,28 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     emailjs.init({ publicKey: "XCo9x7iU8_QIeJ5zu" });
-    emailjs
-      .send(
-        "service_u2lfnv9", // Replace with your EmailJS service ID
-        "template_6trkxuk", // Replace with your EmailJS template ID
-        formData
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          setIsSubmitting(false);
-          setIsSubmitted(true);
-          setFormData({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (err) => {
-          console.error("FAILED...", err);
-          setIsSubmitting(false);
-          setError("Failed to send message. Please try again later.");
-        }
-      );
+    emailjs.send("service_u2lfnv9", "template_6trkxuk", formData).then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      },
+      (err) => {
+        console.error("FAILED...", err);
+        setIsSubmitting(false);
+        setError("Failed to send message. Please try again later.");
+      }
+    );
   };
 
   return (
     <section
-      className="min-h-screen w-full flex items-center z-10"
+      className="min-h-screen w-full flex items-center z-[5]"
       id="contact"
     >
       <div className="container p-2 space-y-8 mx-auto">
@@ -72,7 +66,7 @@ const Contact = () => {
             <p className="mt-2 text-lg text-teal-100">
               You can also check out my resume{" "}
               <a
-                href="/path/to/your-resume.pdf"
+                href="/Robert_Wilkinson.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-teal-300 hover:text-teal-500"

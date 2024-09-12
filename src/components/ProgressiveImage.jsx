@@ -6,6 +6,13 @@ const ProgressiveImage = ({ tinyUrl, thumbUrl, alt, className }) => {
   const imgRef = useRef(null);
 
   useEffect(() => {
+    const cachedImage = localStorage.getItem(thumbUrl);
+    if (cachedImage) {
+      setSrc(thumbUrl);
+      setIsLoaded(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -16,6 +23,7 @@ const ProgressiveImage = ({ tinyUrl, thumbUrl, alt, className }) => {
             console.log("Full image loaded");
             setSrc(thumbUrl);
             setIsLoaded(true);
+            localStorage.setItem(thumbUrl, thumbUrl);
           };
           img.onerror = (error) => {
             console.error("Error loading full image", error);
