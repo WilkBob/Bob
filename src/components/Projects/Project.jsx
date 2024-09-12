@@ -1,4 +1,20 @@
 import ProgressiveImage from "../ProgressiveImage";
+import { FaGithub, FaGlobe, FaCode, FaList, FaImage } from "react-icons/fa";
+import { SiJavascript, SiReact, SiNodedotjs, SiMongodb } from "react-icons/si";
+
+const TechIcon = ({ tech }) => {
+  const iconMap = {
+    JavaScript: SiJavascript,
+    React: SiReact,
+    "Node.js": SiNodedotjs,
+    MongoDB: SiMongodb,
+    // Add more mappings as needed
+  };
+
+  const Icon = iconMap[tech] || FaCode;
+
+  return <Icon className="inline-block mr-2" />;
+};
 
 const Project = ({
   title,
@@ -9,18 +25,23 @@ const Project = ({
   images,
 }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4">
-      <div>
-        <h3 className="text-3xl font-semibold text-teal-300 mb-2">{title}</h3>
-        <p className="text-lg">{description}</p>
-        <div className="space-x-4 py-4">
+    <div className="bg-zinc-800/20 rounded-lg shadow-lg overflow-hidden">
+      <div className="p-6">
+        <h3 className="text-3xl font-bold text-teal-300 mb-4 flex items-center">
+          <FaCode className="mr-3" />
+          {title}
+        </h3>
+        <p className="text-gray-300 mb-6">{description}</p>
+
+        <div className="flex flex-wrap gap-4 mb-6">
           {links.live && (
             <a
               href={links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-teal-300 hover:text-teal-500 transition-colors duration-300"
+              className="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition-colors duration-300 flex items-center"
             >
+              <FaGlobe className="mr-2" />
               Live Site
             </a>
           )}
@@ -29,45 +50,63 @@ const Project = ({
               href={links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-teal-300 hover:text-teal-500 transition-colors duration-300"
+              className="bg-gray-600 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors duration-300 flex items-center"
             >
+              <FaGithub className="mr-2" />
               GitHub
             </a>
           )}
         </div>
-        <div className="space-y-4">
-          <h4 className="text-2xl font-semibold text-teal-100">Tech Stack</h4>
-          <ul className="space-y-2">
-            {techStack.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="space-y-4">
-          <h4 className="text-2xl font-semibold text-teal-100">Features</h4>
-          <ul className="space-y-2">
-            {features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="text-xl font-semibold text-teal-200 mb-2 flex items-center">
+              <FaCode className="mr-2" />
+              Tech Stack
+            </h4>
+            <ul className="space-y-1 text-gray-300">
+              {techStack.map((tech, index) => (
+                <li key={index} className="flex items-center">
+                  <TechIcon tech={tech} />
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-xl font-semibold text-teal-200 mb-2 flex items-center">
+              <FaList className="mr-2" />
+              Features
+            </h4>
+            <ul className="list-disc list-inside space-y-1 text-teal-100">
+              {features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-4">
-        <ProgressiveImage
-          tinyUrl={images.home.tiny}
-          thumbUrl={images.home.thumb}
-          alt={images.home.alt}
-        />
-        <ProgressiveImage
-          tinyUrl={images.blog.tiny}
-          thumbUrl={images.blog.thumb}
-          alt={images.blog.alt}
-        />
-        <ProgressiveImage
-          tinyUrl={images.post.tiny}
-          thumbUrl={images.post.thumb}
-          alt={images.post.alt}
-        />
+
+      <div className="p-4">
+        <h4 className="text-xl font-semibold text-teal-200 mb-3 flex items-center">
+          <FaImage className="mr-2" />
+          Project Images
+        </h4>
+        <div className="grid grid-cols-3 gap-2">
+          {Object.values(images).map((image, index) => (
+            <div
+              key={index}
+              className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg cursor-pointer hover:opacity-80 transition-opacity duration-300 group"
+            >
+              <ProgressiveImage
+                tinyUrl={image.tiny}
+                thumbUrl={image.thumb}
+                alt={image.alt}
+                className="object-cover w-full h-full transition-all duration-300 overflow-auto hover:shadow-xl hover:shadow-white"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

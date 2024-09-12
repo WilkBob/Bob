@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const ProgressiveImage = ({ tinyUrl, thumbUrl, alt }) => {
+const ProgressiveImage = ({ tinyUrl, thumbUrl, alt, className }) => {
   const [src, setSrc] = useState(tinyUrl);
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef(null);
@@ -39,7 +39,7 @@ const ProgressiveImage = ({ tinyUrl, thumbUrl, alt }) => {
   }, [thumbUrl]);
 
   return (
-    <div className="relative overflow-hidden w-full">
+    <div className={`relative overflow-hidden w-full ${className}`}>
       <img
         ref={imgRef}
         src={src}
