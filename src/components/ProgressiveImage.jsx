@@ -16,11 +16,11 @@ const ProgressiveImage = ({ tinyUrl, thumbUrl, alt, className }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log("Image is in view, loading full image...");
+          //console.log("Image is in view, loading full image...");
           const img = new Image();
           img.src = thumbUrl;
           img.onload = () => {
-            console.log("Full image loaded");
+            //console.log("Full image loaded");
             setSrc(thumbUrl);
             setIsLoaded(true);
             localStorage.setItem(thumbUrl, thumbUrl);

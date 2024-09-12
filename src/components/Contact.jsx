@@ -26,7 +26,7 @@ const Contact = () => {
     emailjs.init({ publicKey: "XCo9x7iU8_QIeJ5zu" });
     emailjs.send("service_u2lfnv9", "template_6trkxuk", formData).then(
       (response) => {
-        console.log("SUCCESS!", response.status, response.text);
+        //console.log("SUCCESS!", response.status, response.text);
         setIsSubmitting(false);
         setIsSubmitted(true);
         setFormData({

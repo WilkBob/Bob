@@ -111,8 +111,8 @@ const Project = ({
               onClick={() => {
                 setModalOpen(true);
                 setIMGIndex(index);
-                console.log("Image clicked");
-                console.log(image, modalOpen);
+                //console.log("Image clicked");
+                //console.log(image, modalOpen);
               }}
             >
               <ProgressiveImage
