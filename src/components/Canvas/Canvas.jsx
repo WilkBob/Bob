@@ -29,8 +29,18 @@ const Canvas = () => {
       }
     };
 
+    const debounce = (func, wait) => {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    };
+
+    const debouncedHandleResize = debounce(handleResize, 200);
+
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", debouncedHandleResize);
 
     for (let i = 0; i < 200; i++) {
       const x = Math.random() * window.innerWidth;
@@ -61,7 +71,7 @@ const Canvas = () => {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", debouncedHandleResize);
 
       // Clean up points
       points.length = 0;

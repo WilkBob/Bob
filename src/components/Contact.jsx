@@ -27,6 +27,9 @@ const Contact = () => {
     emailjs.send("service_u2lfnv9", "template_6trkxuk", formData).then(
       (response) => {
         //console.log("SUCCESS!", response.status, response.text);
+        if (response.status !== 200) {
+          throw new Error("Failed to send message. Please try again later.");
+        }
         setIsSubmitting(false);
         setIsSubmitted(true);
         setFormData({
