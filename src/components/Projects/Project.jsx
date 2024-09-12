@@ -103,7 +103,7 @@ const Project = ({
           <FaImage className="mr-2" />
           Project Images
         </h4>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
           {Object.values(images).map((image, index) => (
             <div
               key={index}

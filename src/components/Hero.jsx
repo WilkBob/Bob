@@ -29,7 +29,7 @@ const Hero = () => {
           Software Engineer | JavaScript Enthusiast | Creative Problem Solver
         </motion.p>
         <motion.div
-          className="flex flex-col sm:flex-row sm:flex-wrap sm:space-x-4 space-y-4 sm:space-y-0"
+          className="flex flex-col md:flex-row md:flex-wrap md:space-x-4 space-y-4 md:space-y-0 max-w-[fit-content]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}

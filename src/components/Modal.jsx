@@ -47,58 +47,58 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center lg:p-4"
+          className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center"
           onClick={() => setModalOpen(false)}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full relative"
+            className="bg-gray-800 md:p-4 rounded-lg shadow-2xl w-full m-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setModalOpen(false)}
-              className="absolute top-2 right-2 text-gray-300 hover:text-white transition-colors duration-200 z-10"
-            >
-              <FaTimes size={24} />
-            </button>
-            <div className="lg:p-4">
-              <div className="relative">
-                <ProgressiveImage
-                  tinyUrl={images[imageKeys[index]].thumb}
-                  thumbUrl={images[imageKeys[index]].original}
-                  alt={images[imageKeys[index]].alt}
-                  className="w-full h-auto rounded-md"
-                />
-                <button
-                  onClick={prevImage}
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50 transition-all duration-200"
-                >
-                  <FaChevronLeft size={20} />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-50 transition-all duration-200"
-                >
-                  <FaChevronRight size={20} />
-                </button>
-              </div>
-              <div className="mt-4 flex justify-center">
-                {imageKeys.map((key, i) => (
-                  <button
-                    key={key}
-                    onClick={() => setIndex(i)}
-                    className={`w-3 h-3 rounded-full mx-1 ${
-                      i === index ? "bg-white" : "bg-gray-500"
-                    }`}
-                  />
-                ))}
-              </div>
-              <p className="text-white text-center mt-4">
-                {images[imageKeys[index]].alt}
-              </p>
+            <div className="flex justify-end mb-2">
+              <button
+                onClick={() => setModalOpen(false)}
+                className="text-gray-300 hover:text-white transition-colors duration-200"
+              >
+                <FaTimes size={24} />
+              </button>
             </div>
+            <div className="relative">
+              <ProgressiveImage
+                tinyUrl={images[imageKeys[index]].thumb}
+                thumbUrl={images[imageKeys[index]].original}
+                alt={images[imageKeys[index]].alt}
+                className="w-full h-auto rounded-md"
+              />
+              <button
+                onClick={prevImage}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-1 rounded-full hover:bg-opacity-50 transition-all duration-200"
+              >
+                <FaChevronLeft size={20} />
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-1 rounded-full hover:bg-opacity-50 transition-all duration-200"
+              >
+                <FaChevronRight size={20} />
+              </button>
+            </div>
+            <div className="mt-4 flex justify-center">
+              {imageKeys.map((key, i) => (
+                <button
+                  key={key}
+                  onClick={() => setIndex(i)}
+                  className={`w-3 h-3 rounded-full mx-1 ${
+                    i === index ? "bg-white" : "bg-gray-500"
+                  }`}
+                />
+              ))}
+            </div>
+            <p className="text-white text-center mt-4">
+              {images[imageKeys[index]].alt}
+            </p>
           </motion.div>
         </motion.div>
       )}
