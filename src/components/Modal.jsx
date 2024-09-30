@@ -1,22 +1,21 @@
 import { useCallback, useEffect } from "react";
-import ProgressiveImage from "./ProgressiveImage";
+
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { ProgressiveImage } from "progressify-react";
 
 const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
-  const imageKeys = Object.keys(images);
-
   const nextImage = useCallback(() => {
     setIndex((prevIndex) =>
-      prevIndex === imageKeys.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
-  }, [imageKeys.length, setIndex]);
+  }, [images.length, setIndex]);
 
   const prevImage = useCallback(() => {
     setIndex((prevIndex) =>
-      prevIndex === 0 ? imageKeys.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
-  }, [imageKeys.length, setIndex]);
+  }, [images.length, setIndex]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -63,7 +62,7 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="md:p-4 rounded-lg shadow-2xl max-w-6xl w-full md:m-4"
+            className="md:p-4 rounded-lg  max-w-7xl w-full md:m-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-end mb-2">
@@ -76,10 +75,10 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
             </div>
             <div className="relative">
               <ProgressiveImage
-                tinyUrl={images[imageKeys[index]].thumb}
-                thumbUrl={images[imageKeys[index]].original}
-                alt={images[imageKeys[index]].alt}
-                className="w-full h-auto rounded-md"
+                src={images[index]}
+                className="w-full
+              rounded-lg"
+                placeholderClassName="animate-pulse"
               />
               <button
                 onClick={prevImage}
@@ -95,7 +94,7 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
               </button>
             </div>
             <div className="mt-4 flex justify-center">
-              {imageKeys.map((key, i) => (
+              {images.map((key, i) => (
                 <button
                   key={key}
                   onClick={() => setIndex(i)}
@@ -105,9 +104,6 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
                 />
               ))}
             </div>
-            <p className="text-white text-center mt-4">
-              {images[imageKeys[index]].alt}
-            </p>
           </motion.div>
         </motion.div>
       )}

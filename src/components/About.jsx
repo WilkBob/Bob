@@ -10,6 +10,7 @@ import {
   FaWindows,
   FaUbuntu,
   FaUnity,
+  FaPython,
 } from "react-icons/fa";
 import {
   SiTypescript,
@@ -89,6 +90,13 @@ const About = () => {
                 </li>
                 <li className="flex items-center space-x-2">
                   <span>Express.js</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <FaPython size="1.5rem" />
+                  <span>Python</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <span>FastAPI</span>
                 </li>
               </ul>
             </div>

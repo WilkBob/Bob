@@ -1,3 +1,4 @@
+import { ImageProvider } from "progressify-react";
 import Project from "./Project";
 import { projObj } from "./ProjObj";
 
@@ -9,9 +10,11 @@ const Projects = () => {
     >
       <div className="container mx-auto space-y-8 pb-20 flex flex-col justify-center h-full">
         <h2 className="text-4xl font-bold text-teal-300">Projects</h2>
-        {projObj.map((proj, index) => (
-          <Project key={index} {...proj} />
-        ))}
+        <ImageProvider>
+          {projObj.map((proj, index) => (
+            <Project key={index} {...proj} />
+          ))}
+        </ImageProvider>
       </div>
     </section>
   );

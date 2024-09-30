@@ -1,5 +1,35 @@
 export const projObj = [
   {
+    title: "Sizeable Image Processor",
+    description:
+      "A web application for resizing and optimizing images. It's a full-stack project with a component library, which is being used in my portfolio as well. It provides an easy way to implement progressive image loading and lazy loading in React applications.",
+    techStack: [
+      "Typescript",
+      "React",
+      "Tailwind CSS",
+      "Python",
+      "FastAPI",
+      "Firebase",
+      "Google App Engine",
+    ],
+    features: [
+      "Full Web Application",
+      "Component Library in Typescript",
+      "Image Upload and Processing with Rest API",
+      "User Authentication",
+    ],
+    links: {
+      live: "https://web-size.web.app",
+      github: "https://github.com/WilkBob/sizeable",
+    },
+    images: [
+      "Sizeable",
+      "Sizeable-library",
+      "Sizeable-progressify",
+      "Sizeable-swagger",
+    ],
+  },
+  {
     title: "Sugano Investments Website",
     description: "A website for a family-owned investment company.",
     techStack: ["React", "Tailwind CSS", "Custom Markdown Blog"],
@@ -14,26 +44,7 @@ export const projObj = [
       live: "https://suganoinvestments.com",
       github: null,
     },
-    images: {
-      home: {
-        tiny: "/images/tiny_SI-Home.png",
-        thumb: "/images/thumb_SI-Home.png",
-        original: "/images/SI-Home.png",
-        alt: "Home Page for Sugano Investments",
-      },
-      blog: {
-        tiny: "/images/tiny_SI-Blog.png",
-        thumb: "/images/thumb_SI-Blog.png",
-        original: "/images/SI-Blog.png",
-        alt: "Blog Page for Sugano Investments",
-      },
-      post: {
-        tiny: "/images/tiny_SI-Post.png",
-        thumb: "/images/thumb_SI-Post.png",
-        original: "/images/SI-Post.png",
-        alt: "Post Page for Sugano Investments",
-      },
-    },
+    images: ["SI-Home", "SI-Post", "SI-Blog"],
   },
   {
     title: "Tree Visualizer",
@@ -49,19 +60,6 @@ export const projObj = [
       live: "https://wilkbob.github.io/DSVis/",
       github: "https://github.com/WilkBob/DSVis",
     },
-    images: {
-      home: {
-        tiny: "/images/tiny_TT-Home.png",
-        thumb: "/images/thumb_TT-Home.png",
-        original: "/images/TT-Home.png",
-        alt: "Tree Visualizer (HTML Canvas)",
-      },
-      post: {
-        tiny: "/images/tiny_TT-Code.png",
-        thumb: "/images/thumb_TT-Code.png",
-        original: "/images/TT-Code.png",
-        alt: "Code Illustrations",
-      },
-    },
+    images: ["TT-Home", "TT-Code"],
   },
 ];

@@ -1,8 +1,8 @@
-import ProgressiveImage from "../ProgressiveImage";
 import { FaGithub, FaGlobe, FaCode, FaList, FaImage } from "react-icons/fa";
 import { SiJavascript, SiReact, SiNodedotjs, SiMongodb } from "react-icons/si";
 import Modal from "../Modal";
 import { useState } from "react";
+import { ProgressiveImage } from "progressify-react";
 
 const TechIcon = ({ tech }) => {
   const iconMap = {
@@ -31,7 +31,7 @@ const Project = ({
   return (
     <div className="overflow-hidden max-w-[1400px]">
       <div className="p-6">
-        <h3 className="text-3xl font-bold text-teal-300 mb-4 flex items-center">
+        <h3 className="text-4xl font-bold text-teal-300 mb-4 flex items-center">
           <FaCode className="mr-3" />
           {title}
         </h3>
@@ -104,7 +104,7 @@ const Project = ({
           Project Images
         </h4>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
-          {Object.values(images).map((image, index) => (
+          {images.map((image, index) => (
             <div
               key={index}
               className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg cursor-pointer hover:opacity-80 transition-opacity duration-300 group"
@@ -116,10 +116,10 @@ const Project = ({
               }}
             >
               <ProgressiveImage
-                tinyUrl={image.tiny}
-                thumbUrl={image.original}
-                alt={image.alt}
-                className="object-cover w-full h-full transition-all duration-300 overflow-auto hover:shadow-xl hover:shadow-white"
+                src={image}
+                className="w-full"
+                placeholderClassName="blur-lg animate-pulse"
+                lazy
               />
             </div>
           ))}
