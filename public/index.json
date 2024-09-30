@@ -10,7 +10,7 @@
             986
         ],
         "aspect_ratio": 1.7758620689655173,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "SI-Home",
@@ -23,7 +23,7 @@
             988
         ],
         "aspect_ratio": 1.7722672064777327,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "SI-Post",
@@ -36,7 +36,7 @@
             987
         ],
         "aspect_ratio": 1.7740628166160082,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "Sizeable",
@@ -49,7 +49,7 @@
             984
         ],
         "aspect_ratio": 1.7754065040650406,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "Sizeable-library",
@@ -62,7 +62,7 @@
             970
         ],
         "aspect_ratio": 1.7958762886597939,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "Sizeable-progressify",
@@ -75,7 +75,7 @@
             982
         ],
         "aspect_ratio": 1.7759674134419552,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "Sizeable-swagger",
@@ -88,7 +88,7 @@
             506
         ],
         "aspect_ratio": 2.91897233201581,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "TT-Code",
@@ -101,7 +101,7 @@
             895
         ],
         "aspect_ratio": 1.7083798882681565,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "TT-Hero",
@@ -114,7 +114,7 @@
             496
         ],
         "aspect_ratio": 2.1975806451612905,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     },
     {
         "filename": "TT-Home",
@@ -127,6 +127,6 @@
             989
         ],
         "aspect_ratio": 1.7735085945399394,
-        "thumbnail_size": 300
+        "thumbnail_size": 600
     }
 ]
