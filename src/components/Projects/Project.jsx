@@ -26,7 +26,6 @@ const Project = ({
   links,
   images,
 }) => {
-  "use no memo ";
   const [modalOpen, setModalOpen] = useState(false);
   const [IMGindex, setIMGIndex] = useState(0);
   return (
@@ -119,9 +118,11 @@ const Project = ({
             >
               <ProgressiveImage
                 src={image}
-                placeholderClassName="animate-pulse"
-                className="w-full rounded-lg"
+                placeholderClassName="animate-pulse blur-sm"
+                className="w-full rounded-lg transition-all blur-none duration-300"
+                alt="Project Image"
                 lazy
+                thumb
               />
             </div>
           ))}

@@ -90,10 +90,10 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex, proj }) => {
             </div>
             <div className="relative">
               <ProgressiveImage
-                alt="project"
                 src={images[index]}
-                placeholderClassName="animate-pulse opacity-50"
-                className={`w-full rounded-lg shadow-xl`}
+                placeholderClassName="blur-sm"
+                className="w-full rounded-lg"
+                alt="Project Image"
                 lazy
               />
 
