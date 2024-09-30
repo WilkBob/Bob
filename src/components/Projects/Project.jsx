@@ -26,6 +26,7 @@ const Project = ({
   links,
   images,
 }) => {
+  "use no memo ";
   const [modalOpen, setModalOpen] = useState(false);
   const [IMGindex, setIMGIndex] = useState(0);
   return (
@@ -70,7 +71,7 @@ const Project = ({
             </h4>
             <ul className="space-y-1 text-gray-300">
               {techStack.map((tech, index) => (
-                <li key={index} className="flex items-center">
+                <li key={index + "tech"} className="flex items-center">
                   <TechIcon tech={tech} />
                   {tech}
                 </li>
@@ -84,7 +85,7 @@ const Project = ({
             </h4>
             <ul className="list-disc list-inside space-y-1 text-teal-100">
               {features.map((feature, index) => (
-                <li key={index}>{feature}</li>
+                <li key={index + "fetures"}>{feature}</li>
               ))}
             </ul>
           </div>
@@ -93,6 +94,7 @@ const Project = ({
 
       <div className="p-4">
         <Modal
+          proj={title}
           images={images}
           modalOpen={modalOpen}
           setModalOpen={setModalOpen}
@@ -106,7 +108,7 @@ const Project = ({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
           {images.map((image, index) => (
             <div
-              key={index}
+              key={index + title + "image"}
               className="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg cursor-pointer hover:opacity-80 transition-opacity duration-300 group"
               onClick={() => {
                 setModalOpen(true);
@@ -117,8 +119,8 @@ const Project = ({
             >
               <ProgressiveImage
                 src={image}
-                className="w-full"
-                placeholderClassName="blur-lg animate-pulse"
+                placeholderClassName="animate-pulse"
+                className="w-full rounded-lg"
                 lazy
               />
             </div>

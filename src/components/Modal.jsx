@@ -1,10 +1,10 @@
-import { useCallback, useEffect } from "react";
-
+import { useCallback, useEffect, useMemo } from "react";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProgressiveImage } from "progressify-react";
 
-const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
+const Modal = ({ images, modalOpen, setModalOpen, index, setIndex, proj }) => {
+  "use no memo ";
   const nextImage = useCallback(() => {
     setIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -48,6 +48,21 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
       window.removeEventListener("touchmove", preventScroll);
     };
   }, [modalOpen, prevImage, nextImage, setModalOpen]);
+
+  const renderedButtons = useMemo(
+    () =>
+      images.map((_, i) => (
+        <button
+          key={`btn-${i}-${proj}`}
+          onClick={() => setIndex(i)}
+          className={`w-3 h-3 rounded-full mx-1 ${
+            i === index ? "bg-white" : "bg-gray-500"
+          }`}
+        />
+      )),
+    [images, index, setIndex, proj]
+  );
+
   return (
     <AnimatePresence>
       {modalOpen && (
@@ -55,14 +70,14 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-25 z-50  flex justify-center items-center"
+          className="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-25 z-50 flex justify-center items-center"
           onClick={() => setModalOpen(false)}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="md:p-4 rounded-lg  max-w-7xl w-full md:m-4"
+            className="md:p-4 rounded-lg max-w-7xl w-full md:m-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-end mb-2">
@@ -75,11 +90,13 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
             </div>
             <div className="relative">
               <ProgressiveImage
+                alt="project"
                 src={images[index]}
-                className="w-full
-              rounded-lg"
-                placeholderClassName="animate-pulse"
+                placeholderClassName="animate-pulse opacity-50"
+                className={`w-full rounded-lg shadow-xl`}
+                lazy
               />
+
               <button
                 onClick={prevImage}
                 className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-1 rounded-full hover:bg-opacity-50 transition-all duration-200"
@@ -93,17 +110,7 @@ const Modal = ({ images, modalOpen, setModalOpen, index, setIndex }) => {
                 <FaChevronRight size={20} />
               </button>
             </div>
-            <div className="mt-4 flex justify-center">
-              {images.map((key, i) => (
-                <button
-                  key={key}
-                  onClick={() => setIndex(i)}
-                  className={`w-3 h-3 rounded-full mx-1 ${
-                    i === index ? "bg-white" : "bg-gray-500"
-                  }`}
-                />
-              ))}
-            </div>
+            <div className="mt-4 flex justify-center">{renderedButtons}</div>
           </motion.div>
         </motion.div>
       )}

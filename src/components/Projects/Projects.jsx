@@ -12,7 +12,7 @@ const Projects = () => {
         <h2 className="text-4xl font-bold text-teal-300">Projects</h2>
         <ImageProvider>
           {projObj.map((proj, index) => (
-            <Project key={index} {...proj} />
+            <Project key={index + "proj"} {...proj} />
           ))}
         </ImageProvider>
       </div>
