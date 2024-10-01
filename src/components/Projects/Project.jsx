@@ -122,7 +122,6 @@ const Project = ({
                 className="w-full rounded-lg transition-all blur-none duration-300"
                 alt="Project Image"
                 lazy
-                thumb
               />
             </div>
           ))}
